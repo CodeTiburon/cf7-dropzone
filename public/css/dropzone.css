@@ -1,0 +1,61 @@
+.dropzone {
+    border-radius: 4px;
+    border: 1px dashed #7c7c7c;
+    color: #ccc;
+    font-style: normal;
+    font-weight: 900;
+    margin: 0 0 1.1875rem;
+    padding: 1.1875rem;
+    text-align: center;
+    background: #fff;
+    box-shadow: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+      
+    resize: none;
+    width: 100%;
+}
+
+.dz-preview {
+    position: relative;
+}
+
+.dz-image {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    background-image: url('../images/document-icon.png');
+    background-size: cover;
+}
+
+.dz-preview .dz-details {
+     font-size: 1rem;
+     font-weight: 300;
+     color: #232937;
+}
+
+.dz-preview .dz-error-message {
+    color: red;
+    font-weight: 300;
+}
+
+.dz-preview .dz-error-mark, .dz-preview .dz-success-mark {
+	position: absolute;
+	display: none;
+	left: 30px;
+	top: 30px;
+	width: 54px;
+	height: 58px;
+	left: 50%;
+	margin-left: -27px;
+}
+
+.dz-remove {
+    position: absolute;
+    top: 0;
+    left: calc(50% - -32px);
+    width: 16px;
+    height: 16px;
+    background-image: url('../images/close-icon.png');
+}
+
