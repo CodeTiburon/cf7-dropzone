@@ -1,5 +1,5 @@
 <script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function() { 
+document.addEventListener("DOMContentLoaded", function() {
     Dropzone.autoDiscover = false;
     var el = document.querySelector('input[name=_wpcf7][value="<?php echo $form_id; ?>"]');
     var form = el.form;
@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", function() {
     if (pt) {
         options.previewTemplate = pt.innerHTML;
     }
-    
-    $.extend(options,     
+
+    $.extend(options,
             {   url: form.action,
                 paramName: "<?php echo $param_name; ?>",
                 uploadMultiple: false,
@@ -32,10 +32,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 acceptedFiles: "<?php echo $accepted_files;?>",
                 init: function () {
                     var dz = this;
-                    var submit = form.querySelector('input[type=submit]');                     
+                    var submit = form.querySelector('[type=submit]');
 
-                    submit.addEventListener("click", function (e) {
-
+                    submit.addEventListener('click', function (e) {
                         var files = dz.getQueuedFiles();
 
                         if (files.length > 0) {
@@ -48,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             for (var _i = 0, _len = files.length; _i < _len; _i++) {
                                 var param = dz.options.paramName + (dz.options.uploadMultiple ? "[" + _i + "]" : "")
                                 formData.append(param, files[_i], files[_i].name);
-                            }                
+                            }
 
                             formData.append('_wpcf7_is_ajax_call', 1);
 
@@ -58,28 +57,30 @@ document.addEventListener("DOMContentLoaded", function() {
                         }
 
                     }, false);
-                    
+
                     dz.on('addedfile', function(file) {
                         $('.dz-message').hide();
                     });
-                    
+
                     dz.on('removedfile', function(file) {
                         if (dz.files.length == 0) {
                             $('.dz-message').show();
                         }
                     });
                     dz.on('error', function(file) {
-                        $(file.previewElement).fadeOut(2000, 
+                        $(file.previewElement).fadeOut(2000,
                                 function() {
-                                    dz.removeFile(file);        
+                                    dz.removeFile(file);
                                 });
                     });
 
+                    // Clear selected files after form was successfully submited
+                    $(form).on('reset', function() {
+                        dz.removeAllFiles(true);
+                    });
                 }
             });
-                        
+
     new Dropzone(document.querySelector('#<?php echo $name; ?>'), options);
-   
 });
 </script>
-

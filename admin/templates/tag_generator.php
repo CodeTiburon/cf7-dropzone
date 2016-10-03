@@ -25,10 +25,23 @@
 	</tr>
 
 	<tr>
-	<th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-accepted_files' ); ?>"><?php echo esc_html( __( 'Acceptable file types', 'contact-form-7' ) ); ?></label></th>
-	<td><input type="text" name="accepted_files" class="filetype oneline option" id="<?php echo esc_attr( $args['content'] . '-accepted_files' ); ?>" /></td>
+	<th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-max_files' ); ?>"><?php echo esc_html( __( "Max files", 'contact-form-7' ) ); ?></label></th>
+	<td>
+		<input type="number" name="max_files" class="oneline option" min="1" step="1" id="<?php echo esc_attr( $args['content'] . '-max_files' ); ?>" />
+		<br />
+		<span class="description"><?php _e('If empty only 1 file will be excepted by default', 'contact-form-7'); ?></span>
+	</td>
 	</tr>
-        
+
+	<tr>
+	<th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-accepted_files' ); ?>"><?php echo esc_html( __( 'Acceptable file types', 'contact-form-7' ) ); ?></label></th>
+	<td>
+		<input type="text" name="accepted_files" class="filetype oneline option" id="<?php echo esc_attr( $args['content'] . '-accepted_files' ); ?>" />
+		<br />
+		<span class="description"><?php _e('This is a comma separated list of mime types or file extensions. Eg.: image/*,application/pdf,.psd', 'contact-form-7'); ?></span>
+	</td>
+	</tr>
+
         <tr>
         <th scope="row"><?php echo esc_html( __( 'Options', 'contact-form-7' ) ); ?></th>
 	<td>
@@ -38,10 +51,10 @@
 		<label><input type="checkbox" name="create_image_thumbnails:true" class="option" /> <?php echo esc_html( __( 'Create image thumbnails', 'contact-form-7' ) ); ?></label>
 		</fieldset>
 	</td>
-	</tr> 
+	</tr>
         <tr>
-	<th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-message' ); ?>"><?php echo esc_html( __( 'Drop area message', 'contact-form-7' ) ); ?></label></th>
-	<td><input type="text" name="message" class="oneline option" id="<?php echo esc_attr( $args['content'] . '-message' ); ?>" /></td>
+	<th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-values' ); ?>"><?php echo esc_html( __( 'Drop area message', 'contact-form-7' ) ); ?></label></th>
+	<td><input type="text" name="values" class="oneline" id="<?php echo esc_attr( $args['content'] . '-values' ); ?>" /></td>
 	</tr>
         <tr>
 	<th scope="row"><?php echo esc_html( __( 'Preview template file', 'contact-form-7' ) ); ?></th>
@@ -63,4 +76,3 @@
 
 	<p class="description mail-tag"><label for="<?php echo esc_attr( $args['content'] . '-mailtag' ); ?>"><?php echo sprintf( esc_html( __( "To attach the file uploaded through this field to mail, you need to insert the corresponding mail-tag (%s) into the File Attachments field on the Mail tab.", 'contact-form-7' ) ), '<strong><span class="mail-tag"></span></strong>' ); ?><input type="text" class="mail-tag code hidden" readonly="readonly" id="<?php echo esc_attr( $args['content'] . '-mailtag' ); ?>" /></label></p>
 </div>
-
